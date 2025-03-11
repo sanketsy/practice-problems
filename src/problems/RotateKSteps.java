@@ -39,14 +39,15 @@ public class RotateKSteps {
     static void solve1(int[] arr, int k) {
         int n = arr.length;
 
-        for (int i = 0, j = n - k - 1; i < (n - k) / 2; i++, j--) {
+        //i < (n - k) / 2 -> this could be loop condition but below is better
+        for (int i = 0, j = n - k - 1; i < j; i++, j--) {
             swap(arr, i, j);
         }
 
-        for (int i = n - k, j = n - 1; ; i++, j--) {
-            if (i >= j) {
-                break;
-            }
+        for (int i = n - k, j = n - 1; i < j; i++, j--) {
+//            if (i >= j) {
+//                break;
+//            }
             swap(arr, i, j);
         }
 
