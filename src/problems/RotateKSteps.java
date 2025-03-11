@@ -8,8 +8,9 @@ public class RotateKSteps {
         int[] arr = {1, 2, 3, 4, 5};
         int k = 2;
 
-        solve1(arr, k);
-        solve2(arr, k);
+        solve1(arr, k); //NAIVE
+        solve2(arr, k); //EXPECTED
+        solve3(arr, k); //RECURSIVE
 
 
     }
@@ -18,7 +19,7 @@ public class RotateKSteps {
      * NAIVE: Just print last k elements then print 1st n-k elements
      * Little tricky check the indexes
      */
-    static void solve2(int[] arr, int k) {
+    static void solve1(int[] arr, int k) {
         int n = arr.length;
 
         for (int i = 0; i < n; i++) {
@@ -36,7 +37,7 @@ public class RotateKSteps {
      * then Reverse last k elements
      * then Reverse whole arr and SOLVED
      */
-    static void solve1(int[] arr, int k) {
+    static void solve2(int[] arr, int k) {
         int n = arr.length;
 
         //i < (n - k) / 2 -> this could be loop condition but below is better
@@ -62,5 +63,24 @@ public class RotateKSteps {
         arr[j] = arr[i] - arr[j];
         arr[i] = arr[i] - arr[j];
         arr[j] = arr[i] + arr[j];
+    }
+
+    /**
+     * Recursive: Shift elements 1 by 1 to the right k times but recursively
+     */
+
+    static void solve3(int[] arr, int k) {
+        if (k == 0) {
+            return;
+        }
+
+        int n = arr.length;
+        int temp = arr[n - 1];
+        for (int i = n - 1; i > 0; i--) {
+            arr[i] = arr[i - 1];
+        }
+        arr[0] = temp;
+
+        solve3(arr, k - 1);
     }
 }
