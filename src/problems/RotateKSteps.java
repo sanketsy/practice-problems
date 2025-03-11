@@ -15,7 +15,7 @@ public class RotateKSteps {
     }
 
     /**
-     * CHINDI: Just print last k elements then print 1st n-k elements
+     * NAIVE: Just print last k elements then print 1st n-k elements
      * Little tricky check the indexes
      */
     static void solve2(int[] arr, int k) {
@@ -31,6 +31,7 @@ public class RotateKSteps {
     }
 
     /**
+     * EXPECTED
      * Reverse first grp i.e. n-k elements
      * then Reverse last k elements
      * then Reverse whole arr and SOLVED
