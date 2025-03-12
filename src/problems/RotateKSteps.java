@@ -1,5 +1,7 @@
 package problems;
 
+import utils.SwapUtil;
+
 import java.util.Arrays;
 
 public class RotateKSteps {
@@ -11,8 +13,6 @@ public class RotateKSteps {
         solve1(arr, k); //NAIVE
         solve2(arr, k); //EXPECTED
         solve3(arr, k); //RECURSIVE
-
-
     }
 
     /**
@@ -42,27 +42,21 @@ public class RotateKSteps {
 
         //i < (n - k) / 2 -> this could be loop condition but below is better
         for (int i = 0, j = n - k - 1; i < j; i++, j--) {
-            swap(arr, i, j);
+            SwapUtil.swapInPlace(arr, i, j);
         }
 
         for (int i = n - k, j = n - 1; i < j; i++, j--) {
 //            if (i >= j) {
 //                break;
 //            }
-            swap(arr, i, j);
+            SwapUtil.swapInPlace(arr, i, j);
         }
 
         for (int i = 0, j = n - 1; i < n / 2; i++, j--) {
-            swap(arr, i, j);
+            SwapUtil.swapInPlace(arr, i, j);
         }
 
         System.out.println(Arrays.toString(arr));
-    }
-
-    static void swap(int[] arr, int i, int j) {
-        arr[j] = arr[i] - arr[j];
-        arr[i] = arr[i] - arr[j];
-        arr[j] = arr[i] + arr[j];
     }
 
     /**
