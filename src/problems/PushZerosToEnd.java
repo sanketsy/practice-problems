@@ -7,9 +7,9 @@ import java.util.Arrays;
 public class PushZerosToEnd {
     public static void main(String[] args) {
 
-        int[] arr = {0, 1, 0, 2, 3, 0, 0, 4, 5, 0, 6, 7, 0, 8, 0};
+        int[] arr = {1, 0, 2, 3, 0, 0, 4, 5, 0, 6, 7, 0, 8, 0};
 
-        solve1(arr);
+//        solve1(arr);
         solve2(arr);
     }
 
@@ -37,8 +37,11 @@ public class PushZerosToEnd {
 
     /**
      * Best solution
+     * zerothIndex keeps traversing through non-zeros and stops at a zero
+     * basically when we do zerothIndex++ we are kind-off hoping that next int is zero
      */
     static void solve2(int[] arr) {
+        arr = new int[]{1, 0, 2, 3, 4, 5};
         int zerothIndex = 0;
 
         for (int i = 0; i < arr.length; i++) {
